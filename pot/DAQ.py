@@ -82,8 +82,6 @@ def main():
             angle_chart(angle_record,chart_placeholder)
             time.sleep(0.01)
             i += 1
-            if i==500:
-                i=0
             previous_angle = angle
 
         angle_record.to_csv('angle_record.csv',index=False)
