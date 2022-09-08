@@ -66,6 +66,7 @@ def main():
         i = 0
         previous_angle = 0
         angle_record = pd.DataFrame(data=[],columns=['Time','Angle'])
+
         while True: #Change number of iterations to as many as you need
             now = datetime.now()
             current_time = now.strftime("%H:%M:%S")
@@ -82,6 +83,10 @@ def main():
             angle_chart(angle_record,chart_placeholder)
             time.sleep(0.01)
             i += 1
+            if i == 200:
+                i=0
+                angle_record = pd.DataFrame(data=[],columns=['Time','Angle'])
+
             previous_angle = angle
 
         angle_record.to_csv('angle_record.csv',index=False)
