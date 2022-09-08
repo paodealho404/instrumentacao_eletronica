@@ -83,7 +83,7 @@ def main():
             angle_chart(angle_record,chart_placeholder)
             time.sleep(0.01)
             i += 1
-            if i == 200:
+            if i == 500:
                 i=0
                 angle_record = pd.DataFrame(data=[],columns=['Time','Angle'])
 
