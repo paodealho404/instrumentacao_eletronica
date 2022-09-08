@@ -13,7 +13,7 @@ def angle_gauge(angle,previous_angle,gauge_placeholder):
         domain = {'x': [0, 1], 'y': [0, 1]},
         value = angle,
         mode = "gauge+number+delta",
-        title = {'text': "Angle (°)"},
+        title = {'text': "Angulo (°)"},
         delta = {'reference': previous_angle},
         gauge = {'axis': {'range': [0, 180]}}))
 
