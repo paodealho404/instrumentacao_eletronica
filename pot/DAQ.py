@@ -20,8 +20,9 @@ def angle_gauge(angle,previous_angle,gauge_placeholder):
     gauge_placeholder.write(fig)
 
 def angle_chart(df,chart_placeholder):
-    fig = px.line(df, x="Time", y="Angle", title='Angle vs Time', color_discrete_sequence=['red'] )
-    
+    fig = px.line(df, x="Time", y="Angle", title='Ângulo vs Tempo')
+    fig.update_traces(line=dict(color="lime", width=3.5))
+    fig.update_layout(plot_bgcolor='rgb(25,25,25,0)', paper_bgcolor='rgb(50,50,50,0.5)', title_font_size=25, font_size=15)
     chart_placeholder.write(fig)
 
 def serial_ports():
@@ -67,7 +68,7 @@ def main():
         previous_angle = 0
         angle_record = pd.DataFrame(data=[],columns=['Time','Angle'])
 
-        while True: #Change number of iterations to as many as you need
+        while True:
             now = datetime.now()
             current_time = now.strftime("%H:%M:%S")
 
@@ -81,9 +82,9 @@ def main():
             angle_record.loc[i,'Angle'] = angle
             angle_gauge(angle,previous_angle,gauge_placeholder)
             angle_chart(angle_record,chart_placeholder)
-            time.sleep(0.01)
+            time.sleep(0.0001)
             i += 1
-            if i == 1000:
+            if i == 750:
                 i=0
                 angle_record = pd.DataFrame(data=[],columns=['Time','Angle'])
 
