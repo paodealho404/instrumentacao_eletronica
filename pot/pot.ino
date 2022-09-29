@@ -33,7 +33,7 @@ void loop() {
   float res_angle = factor[n - 1];
   for (int i = n - 1; i > 0; i--) {
     /* Cálculo do ângulo resultante através da tensão média e os coeficientes
-     * aproximados  */
+     * aproximados */
     res_angle = res_angle * volt + factor[i - 1];
   }
 
