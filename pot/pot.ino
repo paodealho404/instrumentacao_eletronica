@@ -1,18 +1,17 @@
 const int VOL_PIN = A0;
 const int n = 8;
-float factor[n] = {
-    -1367.7683236907033, 4004.283865365811, -4208.839544576302,
-    2362.56930138958,    -775.694927869914, 149.17645538165743,
-    -15.586238303975392, 0.6836451762256601}; // Coeficientes obtidos a partir
-                                              // da aproximação utilizando o
-                                              // método dos mínimos quadrados
+float factor[n] = {-1367.7683236907033, 4004.283865365811, -4208.839544576302,
+                   2362.56930138958,    -775.694927869914, 149.17645538165743,
+                   -15.586238303975392, 0.6836451762256601};
+/* Coeficientes obtidos a partir da aproximação utilizando o método dos mínimos
+ * quadrados */
 
-// Variável de controle para impressão do valor de tensão ou valor de ângulo
-// convertido
+/* Variável de controle para impressão do valor de tensão ou valor de ângulo
+convertido */
 #define converter_angulo true
 
 void setup() { 
-  Serial.begin(9600);
+  Serial.begin(9600); 
 }
 
 void loop() {
@@ -27,7 +26,8 @@ void loop() {
   /* Calculando a tensão média para filtrar grandes variações da entrada e obter
    * um resultado mais uniforme */
 
-  volt = value / 100 * (5.0 / 1023.0); /* Volts = Bits / Amostras * (5V / 1023) */
+  volt = value / 100 * (5.0 / 1023.0);
+  /* Volts = Bits / Amostras * (5V / 1023) */
 
   /*Algoritmo de Horner (Polinômio Forma Aninhada)*/
   float res_angle = factor[n - 1];
